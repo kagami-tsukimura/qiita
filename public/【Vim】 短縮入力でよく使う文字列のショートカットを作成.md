@@ -4,7 +4,7 @@ tags:
   - Vim
   - Bash
 private: false
-updated_at: '2023-04-25T20:56:25+09:00'
+updated_at: '2023-09-05T22:23:58+09:00'
 id: fc97fabc315d8ef9ef2f
 organization_url_name: null
 slide: false
