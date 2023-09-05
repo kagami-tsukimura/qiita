@@ -12,6 +12,7 @@ id: 60ee9d7f12ca0a593365
 organization_url_name: null
 slide: false
 ---
+
 # Introduction
 
 モデルの汎化性能や精度の検証で、テストデータのみ学習時と変更して評価する手法があります。
@@ -21,6 +22,7 @@ slide: false
 `Resnet`等の学習済モデル、自身で`fine-tuning`等したモデルどちらでも可能です。
 
 使用例として、以下のような場合に役立ちます。
+
 - 新しいテスト用のデータセットで汎化性能を確認したい。
 - `Kaggle`等のオープンデータセットに誤って混ざった、クラス外の画像を除去したい。
 - 大量の生データを分類したい。
@@ -31,10 +33,11 @@ slide: false
 
 https://github.com/kagami-tsukimura/cnn-image-classification
 
-__本記事が少しでも読者様の学びに繋がれば幸いです！__
-__「いいね」をしていただけると今後の励みになるので、是非お願いします！__
+**本記事が少しでも読者様の学びに繋がれば幸いです！**
+**「いいね」をしていただけると今後の励みになるので、是非お願いします！**
 
 ## 環境
+
 Ubuntu22.04
 Python3.11.1
 
@@ -202,7 +205,7 @@ if __name__ == "__main__":
 
 それでは、順にコードを追っていきます。
 
-1. スクリプトに必要なライブラリをimportします。
+1.  スクリプトに必要なライブラリを import します。
 
     ```python: cnn_eval.py
     import json
@@ -210,7 +213,7 @@ if __name__ == "__main__":
     from glob import glob
     from pathlib import Path
     from tqdm import tqdm
-    
+
     import torch
     import torchvision
     from torch.utils.data import DataLoader, Dataset
@@ -219,46 +222,47 @@ if __name__ == "__main__":
     from PIL import Image
     ```
 
-1. データセットクラスを定義します。
-このクラスでデータセットの読み込み(`Image.open`)と前処理(`transform`)を行います。
+1.  データセットクラスを定義します。
+    このクラスでデータセットの読み込み(`Image.open`)と前処理(`transform`)を行います。
 
-    ```python: cnn_eval.py
-    class CustomDataset(Dataset):
-        """Custom dataset class."""
-    
-        def __init__(self, img_paths, transform):
-            """Initialize the dataset
-            Args:
-                img_paths: image paths
-                transform: data transform
-            """
-            self.img_paths = img_paths
-            self.transform = transform
-    
-        def __getitem__(self, index):
-            """Returns one data pair (image and caption).
-            Args:
-                index: index
-            Returns:
-                img: image
-                img_path: image path
-            """
-    
-            img_path = self.img_paths[index]
-            img = Image.open(img_path).convert("RGB")
-            img = self.transform(img)
-            return img, img_path
-    
-        def __len__(self):
-            """Returns the total number of image files.
-            Returns:
-                len: length
-            """
-    
-            return len(self.img_paths)
-    ```
+        ```python: cnn_eval.py
+        class CustomDataset(Dataset):
+            """Custom dataset class."""
 
-1. テストデータの前処理をして準備します。
+            def __init__(self, img_paths, transform):
+                """Initialize the dataset
+                Args:
+                    img_paths: image paths
+                    transform: data transform
+                """
+                self.img_paths = img_paths
+                self.transform = transform
+
+            def __getitem__(self, index):
+                """Returns one data pair (image and caption).
+                Args:
+                    index: index
+                Returns:
+                    img: image
+                    img_path: image path
+                """
+
+                img_path = self.img_paths[index]
+                img = Image.open(img_path).convert("RGB")
+                img = self.transform(img)
+                return img, img_path
+
+            def __len__(self):
+                """Returns the total number of image files.
+                Returns:
+                    len: length
+                """
+
+                return len(self.img_paths)
+        ```
+
+1.  テストデータの前処理をして準備します。
+
     - `Resnet-18`は`224*224`の入力を受け付けるためサイズを調整します。
     - `Resnet-18`は`ImageNet`データセットで学習しているため、正規化も事前に計算された平均値と標準偏差を使用しています。
 
@@ -268,7 +272,7 @@ if __name__ == "__main__":
         Returns:
             test_transform: test data transform
         """
-    
+
         test_transform = transforms.Compose(
             [
                 transforms.Resize(256),
@@ -281,61 +285,61 @@ if __name__ == "__main__":
         return test_transform
     ```
 
-1. クラス名を取得します。
-`ImageNet`データセットのクラス名をWebサイトから一覧で取得します。
+1.  クラス名を取得します。
+    `ImageNet`データセットのクラス名を Web サイトから一覧で取得します。
 
-    ```python: cnn_eval.py
-    def get_classes(CLASS_JSON):
-        """Get class names.
-        Args:
-            CLASS_JSON: class json file
-        Returns:
-            class_names: class names
-        """
-    
-        json_path = f"data/{CLASS_JSON}"
-        if not Path(json_path).exists():
-            # If there is no file, download it.
-            download_url("https://git.io/JebAs", "data", CLASS_JSON)
-    
-        # Read the class list.
-        with open(json_path) as f:
-            data = json.load(f)
-            class_names = [x["ja"] for x in data]
-    
-        return class_names
-    ```
+        ```python: cnn_eval.py
+        def get_classes(CLASS_JSON):
+            """Get class names.
+            Args:
+                CLASS_JSON: class json file
+            Returns:
+                class_names: class names
+            """
 
-1. 画像分類で推論したクラス名のディレクトリがなければ作成します。
-該当画像のディレクトリを移動します。
+            json_path = f"data/{CLASS_JSON}"
+            if not Path(json_path).exists():
+                # If there is no file, download it.
+                download_url("https://git.io/JebAs", "data", CLASS_JSON)
 
-    ```python: cnn_eval.py
-    def mkdir(OUTPUT, dir):
-        """Create directory.
-        Args:
-            dir: directory path
-        """
-    
-        cmd = f"mkdir -p {OUTPUT}/{dir}"
-        subprocess.call(cmd.split())
-    
-    
-    def mv_file(img, OUTPUT, dir):
-        """Move file.
-        Args:
-            img: image path
-            dir: directory path
-        """
-    
-        cmd = f"mv {img} {OUTPUT}/{dir}"
-        subprocess.call(cmd.split())
-    ```
+            # Read the class list.
+            with open(json_path) as f:
+                data = json.load(f)
+                class_names = [x["ja"] for x in data]
 
-1. メイン処理です。
+            return class_names
+        ```
+
+1.  画像分類で推論したクラス名のディレクトリがなければ作成します。
+    該当画像のディレクトリを移動します。
+
+        ```python: cnn_eval.py
+        def mkdir(OUTPUT, dir):
+            """Create directory.
+            Args:
+                dir: directory path
+            """
+
+            cmd = f"mkdir -p {OUTPUT}/{dir}"
+            subprocess.call(cmd.split())
+
+
+        def mv_file(img, OUTPUT, dir):
+            """Move file.
+            Args:
+                img: image path
+                dir: directory path
+            """
+
+            cmd = f"mv {img} {OUTPUT}/{dir}"
+            subprocess.call(cmd.split())
+        ```
+
+1.  メイン処理です。
     - `model = torchvision.models.resnet18(pretrained=True).to(device)`で`ResNet-18`を指定しています。
-        - 他の学習済みモデルをダウンロードする場合は上記を書き換えてください。
-        - 自作のモデルであれば、以下のように書き換えると読み込み可能です。
-            - `model.load_state_dict(torch.load(<自作モデルのパス>))`
+      - 他の学習済みモデルをダウンロードする場合は上記を書き換えてください。
+      - 自作のモデルであれば、以下のように書き換えると読み込み可能です。
+        - `model.load_state_dict(torch.load(<自作モデルのパス>))`
 
 ```python: cnn_eval.py
 def main():
@@ -389,6 +393,7 @@ https://qiita.com/kagami_t/items/22e8c5eb95ee17a2353c
 ![Screenshot from 2023-05-21 11-34-39.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3292052/b7da645a-0d06-5653-6b1d-a92f03664fd5.png)
 
 個人的に好きなクラスの画像を集めただけで、選択に深い意味はありません。
+
 - `fountain(噴水)`
 - `hummingbird(ハチドリ)`
 - `king_penguin(キングペンギン)`
@@ -419,24 +424,22 @@ python3 cnn_eval.py
 
 実務のデータはここまで綺麗ではないことが多いと思うので、この分類でモデルの精度やデータの整理を確認することになります。
 
-
 ## 最後に
 
 `CNN`の画像分類は機械学習分野の中では理解しやすい分野だと思っています。
 紹介したとおりコードも単純です。
 
-オンボードのノートPC等でも`CPU`モードで動作するコードにしてあるため、是非お試ししてみてください。
+オンボードのノート PC 等でも`CPU`モードで動作するコードにしてあるため、是非お試ししてみてください。
 
 最後まで閲覧頂きありがとうございました。
 備忘録の側面もありますが、本記事がお役に立てば幸いです！
 
-
-### 参考URL
+### 参考 URL
 
 - `GitHub`サンプルスクリプト
 
 https://github.com/kagami-tsukimura/cnn-image-classification
 
 - `ImageNet`クラス名一覧
-    
+
 https://git.io/JebAs

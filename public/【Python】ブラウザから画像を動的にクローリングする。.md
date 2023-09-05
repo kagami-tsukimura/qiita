@@ -15,27 +15,29 @@ slide: false
 
 # Introduction
 
-Pythonは業務中に嫌というほど触っており、個人では業務の延長線上で確認作業をすることが主でした。
+Python は業務中に嫌というほど触っており、個人では業務の延長線上で確認作業をすることが主でした。
 仕事とプライベートを分けるために、記事にするのは意図的に避けていました。
-ただ折角のGWなので、連休中はPythonに関する記事も投稿します。
+ただ折角の GW なので、連休中は Python に関する記事も投稿します。
 
 ソースコードは`GitHub`にもあげております。
 
-https://github.com/kagami-tsukimura/create-movie
+<https://github.com/kagami-tsukimura/create-movie>
 
 今回の内容に限っては非常に簡易的なライブラリを用いているため、初心者の方でもお試ししやすいと思います。
 
-必要なのは`Python`環境と3行だけです！
+必要なのは`Python`環境と 3 行だけです！
 
-__本記事が少しでも読者様の学びに繋がれば幸いです！__
-__「いいね」をしていただけると今後の励みになるので、是非お願いします！__
+**本記事が少しでも読者様の学びに繋がれば幸いです！**
+**「いいね」をしていただけると今後の励みになるので、是非お願いします！**
 
 ## 環境
+
 Ubuntu22.04
 Python3.11.1
 icrawler0.6.6
 
 ## 概要
+
 クローリングは、主にデータセットを作成する際に用いることが多いです。
 機械学習においては実装よりもデータの準備や前処理、モデル管理等が遥かに大変な作業になります。
 最終的にスライドショーを作るだけなので`Kaggle`等から取得しても良いのですが、今回は実務でも良く行っているブラウザからクロールする手法を取ります。
@@ -43,43 +45,52 @@ icrawler0.6.6
 上記問題をコントロールするためにも、クロール技術を身につけておくとデータセット取得の幅が広がります。
 
 ## クローリングとは（スクレイピングとの違い）
-- `クローリング`: 「Web上を徘徊して情報を取得すること」
-- `スクレイピング`: 「Web上の情報を抽出すること(`Webスクレイピング`)」
-ざっくりですが、`クローリング`+`データ加工`=`スクレイピング`です。
-混同されている方をよく見かけるので、両方の定義を覚えて認識の齟齬対策をしましょう。
 
-## icrawlerとは
-`icrawler`は簡易的なWebクローラーです。
+- `クローリング`: 「Web 上を徘徊して情報を取得すること」
+- `スクレイピング`: 「Web 上の情報を抽出すること(`Webスクレイピング`)」
+  ざっくりですが、`クローリング`+`データ加工`=`スクレイピング`です。
+  混同されている方をよく見かけるので、両方の定義を覚えて認識の齟齬対策をしましょう。
+
+## icrawler とは
+
+`icrawler`は簡易的な Web クローラーです。
 機械学習における画像集めで私は良くお世話になっています。
-特徴としては`Scrapy`の軽量版の立ち位置で、最短3行でお手軽クローリングが可能です。
+特徴としては`Scrapy`の軽量版の立ち位置で、最短 3 行でお手軽クローリングが可能です。
 ライブラリは`pip`と`conda`でインストールできます。
+
 ```bash:pip
-pip install icrawler 
+pip install icrawler
 ```
+
 ```bash:conda
 conda install -c hellock icrawler
 ```
-お試し版の3行スクリプトです。
+
+お試し版の 3 行スクリプトです。
+
 ```bash: instant_crawling.py
 from icrawler.builtin import GoogleImageCrawler
 
 google_crawler = GoogleImageCrawler(storage={'root_dir': './Penguin'})
 google_crawler.crawl(keyword='Penguin', max_num=10)
 ```
-`'root_dir'`のvalueに画像保存先のディレクトリ
+
+`'root_dir'`の value に画像保存先のディレクトリ
 `keyword`に検索ワード
 `max_num`にクロール枚数を指定すればお好みの画像がクローリングできます。
 
-実行結果を見ると`Penguin`ディレクトリに、指定通り可愛らしいペンギンさんの画像が10枚取得できています！
+実行結果を見ると`Penguin`ディレクトリに、指定通り可愛らしいペンギンさんの画像が 10 枚取得できています！
 ![Screenshot from 2023-04-30 19-10-19.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3292052/54757e2d-28d0-e958-b7e0-4fe6f4067ad7.png)
-以前`Google`ではparser変更でクロールできませんでしたが、記事化にあたり試したところクロールできるように改善されていました。
+以前`Google`では parser 変更でクロールできませんでしたが、記事化にあたり試したところクロールできるように改善されていました。
 デフォルトの検索エンジンは`Google`で`Bing`にも対応できるように実装します。
 
 ## 前準備
+
 - 重複画像の排除。
-上記は画像ファイル名をURLにして重複画像はスキップしてしまえば(基本的に)重複しなくなります。
-ただ長過ぎるファイル名は書き込みエラーが発生します。
-解決には`icrawler`の`filesystem.py`を以下のように修正します。
+  上記は画像ファイル名を URL にして重複画像はスキップしてしまえば(基本的に)重複しなくなります。
+  ただ長過ぎるファイル名は書き込みエラーが発生します。
+  解決には`icrawler`の`filesystem.py`を以下のように修正します。
+
 ```python: filesystem.py
 # -*- coding: utf-8 -*-
 
@@ -114,7 +125,7 @@ class FileSystem(BaseStorage):
         try:
             with open(filepath, mode) as fout:
                 fout.write(data)
-        except  FileNotFoundError: 
+        except  FileNotFoundError:
                 pass
 
     def exists(self, id):
@@ -131,27 +142,31 @@ class FileSystem(BaseStorage):
                 max_idx = idx
         return max_idx
 ```
+
 修正したのはこの範囲です。
+
 ```python:
 #        with open(filepath, mode) as fout:
 #            fout.write(data)
         try:
             with open(filepath, mode) as fout:
                 fout.write(data)
-        except  FileNotFoundError: 
+        except  FileNotFoundError:
                 pass
 ```
+
 ちなみに`filesystem.py`の格納先は以下になります。
 ※私は`pip`で管理しています。
 `/home/<ユーザー名>/.local/lib/python3.11/site-packages/icrawler/storage`
 
 ## 実装
 
-詳細はGitHubからどうぞ。
+詳細は GitHub からどうぞ。
 
-https://github.com/kagami-tsukimura/create_movie
+<https://github.com/kagami-tsukimura/create_movie>
 
-ソースコードはGitHubにありますが、こちらにも公開します。
+ソースコードは GitHub にありますが、こちらにも公開します。
+
 ```python: crawling.py
 import os
 import argparse
@@ -256,7 +271,9 @@ if __name__ == "__main__":
     main(args)
 
 ```
+
 検索ワードは`./configs/search.txt`に改行区切りで記述します。
+
 ```text
 ペンギン
 橋
@@ -264,17 +281,20 @@ if __name__ == "__main__":
 ```
 
 ## 引数
+
 - `-o`: 出力ディレクトリ
-    - デフォルト: `./images`
+  - デフォルト: `./images`
 - `-n`: 出力枚数
-    - デフォルト: `10`(最大`1000`)
+  - デフォルト: `10`(最大`1000`)
 - `-e`: 検索エンジン
 - デフォルト: `google`
 
 ## 実行
+
 ```bash
 python3 crawling.py -n 15
 ```
+
 `./images`に`search.txt`で指定した画像がクロールされていることが確認できます。
 ![Screenshot from 2023-04-30 21-45-46.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3292052/0c8cb140-5dab-d473-2875-91ad4c7b83b4.png)
 ペンギンさん可愛いです......
@@ -285,10 +305,10 @@ python3 crawling.py -n 15
 閲覧頂きありがとうございました。
 本記事がお役に立てば幸いです！
 
-### 参考URL
+### 参考 URL
 
-https://icrawler.readthedocs.io/en/latest/
+<https://icrawler.readthedocs.io/en/latest/>
 
-https://qiita.com/iroha71/items/bf864fe13367e200587a
+<https://qiita.com/iroha71/items/bf864fe13367e200587a>
 
-https://github.com/kagami-tsukimura/create_movie
+<https://github.com/kagami-tsukimura/create_movie>
