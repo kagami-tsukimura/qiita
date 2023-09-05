@@ -7,7 +7,7 @@ tags:
   - Linux
   - Ubuntu
 private: false
-updated_at: '2023-05-13T17:26:13+09:00'
+updated_at: '2023-09-05T22:34:39+09:00'
 id: 84f6ec3142a8b370d908
 organization_url_name: null
 slide: false
