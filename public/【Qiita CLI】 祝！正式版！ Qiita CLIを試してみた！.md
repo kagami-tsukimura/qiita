@@ -7,7 +7,7 @@ tags:
   - npm
   - QiitaCLI
 private: false
-updated_at: '2023-09-05T21:57:05+09:00'
+updated_at: '2023-09-06T22:34:21+09:00'
 id: 0760712d29003841a1fd
 organization_url_name: null
 slide: false
@@ -75,6 +75,16 @@ npx qiita login
 
 ![Screenshot from 2023-09-05 20-20-27.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3292052/3ba6de82-91b9-3c3a-492e-c45db81b5f1f.png)
 この辺りまではストレスもなく良い感じです。
+
+:::note info
+少し仕様を確認してコマンドを覚えたら、とても快適です！
+CLI で完結を意識してから認識が大きく変わりました。
+慣れないうちは、下記の help コマンドを参照すると CLI で完結しやすいです。
+:::
+
+```bash
+npx qiita help
+```
 
 ## お試し（残念な点）
 
