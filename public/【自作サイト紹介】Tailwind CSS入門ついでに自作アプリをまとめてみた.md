@@ -6,7 +6,7 @@ tags:
   - Netlify
   - tailwindcss
 private: false
-updated_at: '2023-09-03T17:06:46+09:00'
+updated_at: '2023-09-06T19:26:14+09:00'
 id: 86581f9c5449a6fb6ea4
 organization_url_name: null
 slide: false
