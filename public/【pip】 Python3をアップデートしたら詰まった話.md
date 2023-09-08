@@ -6,7 +6,7 @@ tags:
   - 初心者
   - Python3
 private: false
-updated_at: '2023-04-30T20:00:47+09:00'
+updated_at: '2023-09-09T08:33:36+09:00'
 id: ccc89a9a403c196b69d6
 organization_url_name: null
 slide: false

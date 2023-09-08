@@ -3,7 +3,7 @@ title: 【Vim】複数行に一括でコメントアウト
 tags:
   - Vim
 private: false
-updated_at: '2023-04-25T20:56:42+09:00'
+updated_at: '2023-09-09T08:33:36+09:00'
 id: c8e81ff2bf3adb102cda
 organization_url_name: null
 slide: false

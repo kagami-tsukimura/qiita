@@ -6,7 +6,7 @@ tags:
   - lsof
   - kill
 private: false
-updated_at: '2023-03-30T19:35:35+09:00'
+updated_at: '2023-09-09T08:33:36+09:00'
 id: a967c65ae584cdcd795c
 organization_url_name: null
 slide: false

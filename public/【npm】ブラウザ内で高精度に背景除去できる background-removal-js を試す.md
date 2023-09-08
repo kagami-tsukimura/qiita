@@ -6,7 +6,7 @@ tags:
   - npm
   - TypeScript
 private: false
-updated_at: '2023-07-01T17:55:45+09:00'
+updated_at: '2023-09-09T08:33:36+09:00'
 id: d7ca7bd9337209df7edf
 organization_url_name: null
 slide: false
