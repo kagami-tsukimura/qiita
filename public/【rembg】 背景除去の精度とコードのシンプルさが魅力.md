@@ -12,6 +12,7 @@ id: 1270ac49f6099b736c03
 organization_url_name: null
 slide: false
 ---
+
 # Introduction
 
 以前`Google`等のブラウザから簡単に画像をクロールするスクリプトを紹介しました。
@@ -24,40 +25,41 @@ https://qiita.com/kagami_t/items/22e8c5eb95ee17a2353c
 現実で珍しいものやネットにないものは合成で無理矢理作ってデータセットを補強できます。
 データ収集は機械学習パイプラインにおいて工数泥棒なので、特に機械学習のプロジェクトでは覚えておくと重宝します。
 
-機械学習に限定せずとも、画像合成でWebサイトやヘッダー画像を作成したり汎用的に楽しめます。
+機械学習に限定せずとも、画像合成で Web サイトやヘッダー画像を作成したり汎用的に楽しめます。
 
-__本記事が少しでも読者様の学びに繋がれば幸いです！__
-__「いいね」をしていただけると今後の励みになるので、是非お願いします！__
+**本記事が少しでも読者様の学びに繋がれば幸いです！**
+**「いいね」をしていただけると今後の励みになるので、是非お願いします！**
 
 ## 環境
+
 Ubuntu22.04
 Python3.11.1
 
-## rembgとは
+## rembg とは
 
 背景除去には幾つか手段が有りますが、`rembg`が汎用的で使用感も良好でした。
 
 https://github.com/danielgatis/rembg
 
 `rembg`では以下の処理を行います。
+
 - `u2net`でオブジェクトのセグメンテーション。
 - `pymatting`でセグメンテーションを用いて背景とオブジェクトを分離。
 
 短いコードで背景除去でき、様々なジャンルや低画質でもある程度の精度を誇っています。
 
-ただ欠点もあります。主に以下の2点です。
-- `pip`限定で`conda install`ができないため、`conda`環境では使用が難しい。
-    - ※`conda`に`pip`を混ぜると壊れます。
-~~- `python: >3.7, <3.11`とバージョン範囲が狭い。~~
-    ~~- 私は`Python3.11.1`に上げてしまい、やむを得ず`Google Colab`で動かしました。~~
-    - 2023年6月7日現在、`python: >3.7, <3.12`に対応されています。
-    `Python3.11`にも無事インストールできました。
+ただ欠点もあります。主に以下の 2 点です。
+
+- `pip`限定で`conda install`ができないため、`conda`環境では使用が難しい。 - ※`conda`に`pip`を混ぜると壊れます。
+  ~~- `python: >3.7, <3.11`とバージョン範囲が狭い。~~
+  ~~- 私は`Python3.11.1`に上げてしまい、やむを得ず`Google Colab`で動かしました。~~ - 2023 年 6 月 7 日現在、`python: >3.7, <3.12`に対応されています。
+  `Python3.11`にも無事インストールできました。
 
 `conda`で環境管理、`Python`のバージョン指定はどちらも業務でありがちな内容のため注意が必要です。
 
 上記の理由から`OpenCV`で自作したり`Image Matting`を紹介したかったのですが、工数や精度、汎用性で劣ってしまいます。
 
-[Image Mattingの参考](https://arxiv.org/pdf/1908.00672.pdf "Image Matting")
+[Image Matting の参考](https://arxiv.org/pdf/1908.00672.pdf 'Image Matting')
 
 ## 実装
 
@@ -68,8 +70,7 @@ https://github.com/danielgatis/rembg
 
 https://github.com/kagami-tsukimura/create-movie/tree/main/remove_bg
 
-`icrawler`同様、こちらも3行で背景除去できますので抜粋します。
-
+`icrawler`同様、こちらも 3 行で背景除去できますので抜粋します。
 
 ```python: rembg.py
   # 画像の読み込み
@@ -89,7 +90,7 @@ https://github.com/kagami-tsukimura/create-movie/tree/main/remove_bg
 ![Screenshot from 2023-05-13 02-02-48.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3292052/e6676202-8b27-a4aa-ea6a-632995eb17e5.png)
 
 複数羽いても、綺麗に背景だけ除去されています。
-これくらいはっきりした画像であれば自作や他モデルでも除去できそうですが、最低3行で背景除去できるのは大きな魅力です。
+これくらいはっきりした画像であれば自作や他モデルでも除去できそうですが、最低 3 行で背景除去できるのは大きな魅力です。
 
 `Gaussian Blur`で画像をぼかして試してみます。
 実際のデータセットは画質が良いとは限らないので、汎用性は重要です。
@@ -124,10 +125,10 @@ for i, img in enumerate(imgs):
 最後まで閲覧頂きありがとうございました。
 備忘録の側面もありますが、本記事がお役に立てば幸いです！
 
-### 参考URL
+### 参考 URL
 
 https://github.com/danielgatis/rembg
 
-[Image Mattingの参考](https://arxiv.org/pdf/1908.00672.pdf "Image Matting")
+[Image Matting の参考](https://arxiv.org/pdf/1908.00672.pdf 'Image Matting')
 
-[Alpha Matting技術「HAttMatting」](https://shiropen.com/2020/07/04/53618/ "HAttMatting")
+[Alpha Matting 技術「HAttMatting」](https://shiropen.com/2020/07/04/53618/ 'HAttMatting')

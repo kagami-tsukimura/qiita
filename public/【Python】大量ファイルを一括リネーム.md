@@ -11,6 +11,7 @@ id: 8256cb84663969603cc8
 organization_url_name: null
 slide: false
 ---
+
 # Introduction
 
 頻繁にデータセットに大量のファイルを追加することがあり、ファイル名に統一感がなくないことが気になっていました。
@@ -22,13 +23,13 @@ slide: false
 処理自体は単純ですが他の記事を見ていると、バックアップせずに使って上書かれ、泣きを見そうなスクリプトが多いです。
 コピペしても比較的安全に使用できるコードを紹介します。
 
-__本記事が少しでも読者様の学びに繋がれば幸いです！__
-__「いいね」をしていただけると今後の励みになるので、是非お願いします！__
+**本記事が少しでも読者様の学びに繋がれば幸いです！**
+**「いいね」をしていただけると今後の励みになるので、是非お願いします！**
 
 ## 環境
+
 Ubuntu22.04
 Python3.11.1
-
 
 ## 実装
 
@@ -68,9 +69,9 @@ for i, file in enumerate(files):
 
 1. `./input`(又は`-i`で指定するディレクトリ)にファイルを格納。
 1. コピペして以下のコマンドを実行。
-    ```bash: 
-    python3 rename.py -n <ファイル名> -e <拡張子>
-    ```
+   ```bash:
+   python3 rename.py -n <ファイル名> -e <拡張子>
+   ```
 1. `./backup`にリネーム前のファイル、`./output`にリネーム後のファイルが格納されていることを確認。
 
 ## お試し
@@ -84,7 +85,7 @@ for i, file in enumerate(files):
 ファイル名は`Fairy_<連番>.png`にします。
 拡張子を指定するコードにした理由は統一感と、`jpg`では透過(アルファチャンネル)対応していないので`png`に変える必要性が出るためです。
 
-```bash: 
+```bash:
 python3 rename.py -n Fairy -o png
 ```
 
@@ -93,12 +94,11 @@ python3 rename.py -n Fairy -o png
 
 ![Screenshot from 2023-05-27 12-23-44.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3292052/2e7a7a52-54cb-97a6-c244-3e6c87946ea3.png)
 
-
 ## おまけ ワンライナーでリネーム
 
 お試しで行ったような簡単なリネームならワンライナーでも可能です。
 
-```bash: 
+```bash:
 ls *.png | awk 'BEGIN{ a=1 }{ printf "mv %s Fairy_%d.png\n", $0, a++ }' | sh
 ```
 
@@ -107,7 +107,7 @@ ls *.png | awk 'BEGIN{ a=1 }{ printf "mv %s Fairy_%d.png\n", $0, a++ }' | sh
 余談ですが、`awk`には`NR`という処理中の行番号を表すビルトイン変数があります。
 連番に使えそうですが、あくまで`NR`の値は`ls`コマンドの出力行数なため行番号の重複でファイルが一部消えます。
 
-__※シェルは下記書籍1冊読んだだけの門外漢のため、あくまで参考程度に。__
+**※シェルは下記書籍 1 冊読んだだけの門外漢のため、あくまで参考程度に。**
 
 https://www.amazon.co.jp/%E3%83%9E%E3%82%B9%E3%82%BF%E3%83%AA%E3%83%B3%E3%82%B0Linux%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88-%E7%AC%AC2%E7%89%88-%E2%80%95Linux%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%80%81bash%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E3%80%81%E3%82%B7%E3%82%A7%E3%83%AB%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%E5%AE%9F%E8%B7%B5%E5%85%A5%E9%96%80-Mokhtar-Ebrahim/dp/481440011X
 
@@ -116,7 +116,6 @@ https://www.amazon.co.jp/%E3%83%9E%E3%82%B9%E3%82%BF%E3%83%AA%E3%83%B3%E3%82%B0L
 最後まで閲覧頂きありがとうございました。
 備忘録の側面もありますが、本記事がお役に立てば幸いです！
 
-
-### 参考URL
+### 参考 URL
 
 https://note.nkmk.me/python-os-rename-glob-format-basename-splitext/

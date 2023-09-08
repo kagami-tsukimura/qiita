@@ -11,6 +11,7 @@ id: a1cae07c9565ce501ced
 organization_url_name: null
 slide: false
 ---
+
 # Introduction
 
 データセットを追加してリネームを繰り返していると、同一画像が複数枚混ざっていることに気が付きました。
@@ -19,48 +20,51 @@ slide: false
 
 過学習の原因となる同一画像の削除、似たような画像の分類等に役立てられます。
 
-__※詳細は下記GitHubの方でご確認ください。__
+**※詳細は下記 GitHub の方でご確認ください。**
 
 https://github.com/chenmingxiang110/AugNet
 
-__本記事が少しでも読者様の学びに繋がれば幸いです！__
-__「いいね」をしていただけると今後の励みになるので、是非お願いします！__
+**本記事が少しでも読者様の学びに繋がれば幸いです！**
+**「いいね」をしていただけると今後の励みになるので、是非お願いします！**
 
 ## 環境
+
 Ubuntu22.04
 Python3.11.1
 
-## imgsimとは
+## imgsim とは
 
 異なる画像の特徴ベクトル間の距離や類似度の差を計算します。
 `AugNet`というディープラーニング学習パラダイムを用います。
-差が0なら同一画像、値が大きくなるほど特徴量の異なる画像です。
+差が 0 なら同一画像、値が大きくなるほど特徴量の異なる画像です。
 
-## AugNetとは
+## AugNet とは
 
 教師なし学習を使用して、画像の表現学習を行うための手法です。
-data augmentationを用いて拡張した画像間の差を測定します。
+data augmentation を用いて拡張した画像間の差を測定します。
 
 ## 実装
 
 1. ライブラリをインストールします。
-    ```bash: 
-    pip install imgsim
-    ```
 
-    `conda`にはなかったため、`pip`でインストールしてください。
-    __※安易に混ぜるのは危険です。[^1]__
-    
-    [^1]: __混ぜるならせめて「Best Practices Checklist」は確認を。__
-    [anaconda.com|Best Practices Checklist](https://www.anaconda.com/blog/using-pip-in-a-conda-environment "Best Practices Checklist")
+   ```bash:
+   pip install imgsim
+   ```
+
+   `conda`にはなかったため、`pip`でインストールしてください。
+   **※安易に混ぜるのは危険です。[^1]**
+
+   [^1]:
+       **混ぜるならせめて「Best Practices Checklist」は確認を。**
+       [anaconda.com|Best Practices Checklist](https://www.anaconda.com/blog/using-pip-in-a-conda-environment 'Best Practices Checklist')
 
 1. 画像を用意します。
 
-    <img width="128" alt="penguin_lr" src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3292052/8001fdf8-84df-a588-5ab2-ad7357de4297.jpeg"><img width="128" alt="penguin" src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3292052/e39dadb5-fc18-b615-827d-453baa59c606.jpeg">
-    <img width="128" alt="another_penguin" src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3292052/ca782e55-a3c6-39ab-8ae1-a19afcb8354e.jpeg"><img width="128" alt="hummingbird" src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3292052/6937560d-1637-a4c9-e468-fdebd033f913.png">
+   <img width="128" alt="penguin_lr" src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3292052/8001fdf8-84df-a588-5ab2-ad7357de4297.jpeg"><img width="128" alt="penguin" src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3292052/e39dadb5-fc18-b615-827d-453baa59c606.jpeg">
+   <img width="128" alt="another_penguin" src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3292052/ca782e55-a3c6-39ab-8ae1-a19afcb8354e.jpeg"><img width="128" alt="hummingbird" src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3292052/6937560d-1637-a4c9-e468-fdebd033f913.png">
 
 1. 類似度を測定します。
-[GitHub](https://github.com/chenmingxiang110/AugNet"GitHub")のサンプルコードを基にお試しします。
+   [GitHub](https://github.com/chenmingxiang110/AugNet"GitHub")のサンプルコードを基にお試しします。
 
 <details><summary><b>=======================<br>&nbsp;&nbsp;&nbsp;サンプルコード<br>&nbsp;========================</b></summary><div>
 
@@ -91,12 +95,12 @@ print("Another Distance =", round(dist2, 2))
 dist3 = imgsim.distance(penguin_vec, hummingbird_vec)
 print("Other Distance =", round(dist3, 2))
 ```
-</div></details>
 
+</div></details>
 
 以下のような実行結果になりました。
 
-```bash: 
+```bash:
 Same Distance = 0.0
 Reversal Distance = 11.53
 Another Distance = 26.67
@@ -105,22 +109,23 @@ Other Distance = 32.2
 
 結果を表にすると以下のようになります。
 
-|Base|Target|Distance|
-|---|---|---|
-|<img width="128" alt="penguin" src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3292052/e39dadb5-fc18-b615-827d-453baa59c606.jpeg">|<img width="128" alt="penguin" src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3292052/e39dadb5-fc18-b615-827d-453baa59c606.jpeg">|__0.0__|
-|<img width="128" alt="penguin" src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3292052/e39dadb5-fc18-b615-827d-453baa59c606.jpeg">|<img width="128" alt="penguin_lr" src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3292052/8001fdf8-84df-a588-5ab2-ad7357de4297.jpeg">|__11.53__|
-|<img width="128" alt="penguin" src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3292052/e39dadb5-fc18-b615-827d-453baa59c606.jpeg">|<img width="128" alt="another_penguin" src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3292052/ca782e55-a3c6-39ab-8ae1-a19afcb8354e.jpeg">|__26.67__|
-|<img width="128" alt="penguin" src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3292052/e39dadb5-fc18-b615-827d-453baa59c606.jpeg">|<img width="128" alt="hummingbird" src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3292052/6937560d-1637-a4c9-e468-fdebd033f913.png">|__32.2__|
+| Base                                                                                                                                                | Target                                                                                                                                                      | Distance  |
+| --------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
+| <img width="128" alt="penguin" src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3292052/e39dadb5-fc18-b615-827d-453baa59c606.jpeg"> | <img width="128" alt="penguin" src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3292052/e39dadb5-fc18-b615-827d-453baa59c606.jpeg">         | **0.0**   |
+| <img width="128" alt="penguin" src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3292052/e39dadb5-fc18-b615-827d-453baa59c606.jpeg"> | <img width="128" alt="penguin_lr" src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3292052/8001fdf8-84df-a588-5ab2-ad7357de4297.jpeg">      | **11.53** |
+| <img width="128" alt="penguin" src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3292052/e39dadb5-fc18-b615-827d-453baa59c606.jpeg"> | <img width="128" alt="another_penguin" src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3292052/ca782e55-a3c6-39ab-8ae1-a19afcb8354e.jpeg"> | **26.67** |
+| <img width="128" alt="penguin" src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3292052/e39dadb5-fc18-b615-827d-453baa59c606.jpeg"> | <img width="128" alt="hummingbird" src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3292052/6937560d-1637-a4c9-e468-fdebd033f913.png">      | **32.2**  |
 
 結果をまとめます。
 
-- 同一の画像は差が0である。
+- 同一の画像は差が 0 である。
 - 左右反転は差が小さい。
 - 似たような画像より異なる画像の方が差が大きい。
 
-当たり前の結果に思えますが、この4枚に対しては信頼できる結果でした。
+当たり前の結果に思えますが、この 4 枚に対しては信頼できる結果でした。
 
 ## 最後に
+
 閲覧頂きありがとうございました。
 
 実はサンプルコードに少々難があったのですが、データセットの整理には何かしら役立てられそうでした。
@@ -129,6 +134,6 @@ Other Distance = 32.2
 
 本記事がお役に立てば幸いです！
 
-## 参考URL
+## 参考 URL
 
 https://github.com/chenmingxiang110/AugNet

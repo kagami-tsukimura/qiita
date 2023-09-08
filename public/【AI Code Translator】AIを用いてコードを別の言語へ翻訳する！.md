@@ -109,7 +109,8 @@ AI を使用して、入力したコードをある言語から別の言語に�
     私は無課金ユーザーで`GPT-4`は試せないため、`GPT-3.5`で実行します。
     ![Screenshot from 2023-04-01 10-29-52.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3292052/0ff0c897-a543-2dda-b3c2-4a2ab636bba9.png)
     実行結果は以下になります。
-    ```visualbasic: fizzbuzz.vb
+
+    ````visualbasic: fizzbuzz.vb
     Imports System
 
         Module Module1
@@ -133,6 +134,8 @@ AI を使用して、入力したコードをある言語から別の言語に�
         ```
         概ね良さそうですね！
         上記の`Python`コードで少し意地悪をしたオプションが可変でなくなってしまっていますが、デフォルトの値を用いてくれています。
+
+    ````
 
 1.  動作確認をします。
     [OneCompiler](https://onecompiler.com/vb/3z4bkaqrq 'OneCompiler')で動作確認をしました。
