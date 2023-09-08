@@ -39,7 +39,7 @@ https://qiita.com/kagami_t/items/7b21948935b4da83b2b0
 
 第 5 章:`コマンドラインモード`
 
-[]
+https://qiita.com/kagami_t/items/4f9ae55aeabb9cec24a0
 
 ## 第 2 部　ファイル
 

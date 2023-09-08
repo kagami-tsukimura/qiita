@@ -199,7 +199,7 @@ Vim9.0
 
 次回`ビジュアルモード`
 
-[]
+https://qiita.com/kagami_t/items/7b21948935b4da83b2b0
 
 ### 参考書籍
 

@@ -266,7 +266,7 @@ Vim9.0
 
 次回`コマンドラインモード`
 
-[]
+https://qiita.com/kagami_t/items/4f9ae55aeabb9cec24a0
 
 ### 参考書籍
 

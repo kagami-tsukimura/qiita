@@ -186,7 +186,7 @@ I have some more questions.
 
 次回`挿入モード`
 
-[]
+https://qiita.com/kagami_t/items/6c693f4e10450c8e9947
 
 ### 参考書籍
 
