@@ -6,7 +6,7 @@ tags:
   - Ubuntu
   - 新人プログラマ応援
 private: false
-updated_at: '2023-09-09T08:30:34+09:00'
+updated_at: '2023-09-09T14:00:02+09:00'
 id: 4f9ae55aeabb9cec24a0
 organization_url_name: null
 slide: false
