@@ -38,7 +38,7 @@ Redux で監視している現在の状態に応じて処理を変える。
 
 ### ex. 飲食店
 
-<details><summary><b>=======================<br>&nbsp;&nbsp;&nbsp;飲食店の例<br>&nbsp;========================</b></summary><div>
+<details><summary><b>=======================<br>&nbsp;&nbsp;&nbsp;飲食店でのRedux<br>&nbsp;========================</b></summary><div>
 
 - 注文前
   - 客
@@ -63,7 +63,7 @@ Redux で監視している現在の状態に応じて処理を変える。
 
 ### ex. X
 
-<details><summary><b>=======================<br>&nbsp;&nbsp;&nbsp;Xの例<br>&nbsp;========================</b></summary><div>
+<details><summary><b>=======================<br>&nbsp;&nbsp;&nbsp;XでのRedux<br>&nbsp;========================</b></summary><div>
 
 - ログイン済
   - プロフィールを見せる。
@@ -89,7 +89,7 @@ Redux でページの画面を変更する。
 
 > Quoted from <https://redux.js.org/tutorials/essentials/part-1-overview-concepts>
 
-<details><summary><b>=======================<br>&nbsp;&nbsp;&nbsp;処理の流れ<br>&nbsp;========================</b></summary><div>
+<details><summary><b>=======================<br>&nbsp;&nbsp;&nbsp;Reduxによる処理の流れ<br>&nbsp;========================</b></summary><div>
 
 1. State：状態
 
