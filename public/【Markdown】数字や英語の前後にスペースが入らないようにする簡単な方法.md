@@ -1,15 +1,16 @@
 ---
 title: 【Markdown】数字や英語の前後にスペースが入らないようにする簡単な方法
 tags:
-  - 'Markdown'
-  - 'VSCode'
-  - 'prettier'
-  - 'QiitaCLI'
+  - Markdown
+  - VSCode
+  - prettier
+  - QiitaCLI
 private: false
-updated_at: ''
-id: null
+updated_at: '2023-09-22T23:15:26+09:00'
+id: 96b2b642ef7e253fddba
 organization_url_name: null
 slide: false
+ignorePublish: false
 ---
 
 # Introduction
