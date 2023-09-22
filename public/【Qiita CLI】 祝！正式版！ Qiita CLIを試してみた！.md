@@ -11,11 +11,12 @@ updated_at: '2023-09-06T22:36:55+09:00'
 id: 0760712d29003841a1fd
 organization_url_name: null
 slide: false
+ignorePublish: false
 ---
 
 # Introduction
 
-2023 年 8 月のアップデートで、[Qiita CLI](https://github.com/increments/qiita-cli)が正式リリースされました。
+2023年8月のアップデートで、[Qiita CLI](https://github.com/increments/qiita-cli)が正式リリースされました。
 
 https://qiita.com/Qiita/items/563a6ea111709a03fbea
 
@@ -23,11 +24,11 @@ https://qiita.com/Qiita/items/563a6ea111709a03fbea
 [^1]: リンクのところ<>で囲むと表示されなくなっちゃいますね。
 あと若干リンクの反映も怪しいです。
 
-個人的には GUI でもある程度快適に書けており、ベータ版で途中まで試した限りでは GUI の方が使い勝手良く感じました。
+個人的にはGUIでもある程度快適に書けており、ベータ版で途中まで試した限りではGUIの方が使い勝手良く感じました。
 
-ですが GitHub 上で記事を管理できる点は魅力的なので、改めて正式版で試してみたいと思います。
+ですがGitHub上で記事を管理できる点は魅力的なので、改めて正式版で試してみたいと思います。
 
-なお、本記事も Qiita CLI で執筆しております。
+なお、本記事もQiitaCLIで執筆しております。
 
 **本記事が少しでも読者様の学びに繋がれば幸いです！**
 **「いいね」をしていただけると今後の励みになるので、是非お願いします！**
@@ -39,7 +40,7 @@ Node.js 20.04
 
 ## 実行手順
 
-手順については公式の記事や GitHub 上にわかりやすく記載されています。
+手順については公式の記事やGitHub上にわかりやすく記載されています。
 
 https://github.com/increments/qiita-cli
 
@@ -47,19 +48,19 @@ https://qiita.com/Qiita/items/666e190490d0af90a92b#qiita-cli%E3%81%A8%E3%81%AF
 
 ## お試し（良かった点）
 
-手順に従って Qiita CLI をセットアップしていきます。
-Node.js が必要になるので、まだの方はインストールから始めましょう。
+手順に従ってQiita CLIをセットアップしていきます。
+Node.jsが必要になるので、まだの方はインストールから始めましょう。
 
 https://qiita.com/sefoo0104/items/0653c935ea4a4db9dc2b
 
-Node.js は OS 問わず GUI から良い感じにインストールできます。[^2]
-[^2]: CLI に慣れたせいか Ubuntu で GUI からインストールすると謎の不安感があります。
+Node.jsはOS問わずGUIから良い感じにインストールできます。[^2]
+[^2]:CLIに慣れたせいかUbuntuでGUIからインストールすると謎の不安感があります。
 
 ![Screenshot from 2023-09-05 20-15-33.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3292052/99cafe7a-6fe8-0d0c-2d83-fbb94db54220.png)
 
-`npx qiita init`で設定ファイルや GitHub Actions の準備がされるのですが、次のステップも紹介してくれて迷うことはなさそうです。
+`npx qiita init`で設定ファイルやGitHub Actionsの準備がされるのですが、次のステップも紹介してくれて迷うことはなさそうです。
 
-一応 tree を見ると以下のようになっています。
+一応treeを見ると以下のようになっています。
 
 ```bash
 tree -a -L 1
@@ -78,8 +79,8 @@ npx qiita login
 
 :::note info
 少し仕様を確認してコマンドを覚えたら、とても快適です！
-CLI で完結を意識してから認識が大きく変わりました。
-慣れないうちは、下記の help コマンドを参照すると CLI で完結しやすいです。
+CLIで完結を意識してから認識が大きく変わりました。
+慣れないうちは、下記のhelpコマンドを参照するとCLIで完結しやすいです。
 :::
 
 ```bash
@@ -90,10 +91,10 @@ npx qiita help
 
 :::note warn
 私の調査不足かも知れないためその際はご指摘ください。
-実現有無はともかく、GUI と比較した際に気になった点です。
+実現有無はともかく、GUIと比較した際に気になった点です。
 :::
 
-投稿済みの記事が public/配下に Markdown 形式で取得できたので見てみると...
+投稿済みの記事がpublic/配下にMarkdown形式で取得できたので見てみると...
 ![Screenshot from 2023-09-05 20-25-18.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3292052/721141d6-0364-d968-5d52-d25c387c8468.png)
 ファイル名...
 `id.md`で取れてくるようです。
@@ -101,7 +102,7 @@ npx qiita help
 
 ---
 
-Preview が保存しないと反映されない。
+Previewが保存しないと反映されない。
 
 ```bash
 npx qiita preview
@@ -115,7 +116,7 @@ npx qiita preview
 
 ---
 
-テンプレートはありますが`.md`形式のため、GUI でタブ補完できていたタグ指定が面倒です。
+テンプレートはありますが`.md`形式のため、GUIでタブ補完できていたタグ指定が面倒です。
 
 ```Markdown
 tags:
@@ -131,10 +132,10 @@ tags:
 
 ---
 
-画像の反映に 1 手間かかります。
+画像の反映に1手間かかります。
 
-GUI では画像をドラッグ&ドロップで反映させられました。
-CLI では Preview から画像アイコンをクリックします。
+GUIでは画像をドラッグ&ドロップで反映させられました。
+CLIではPreviewから画像アイコンをクリックします。
 
 ![Screenshot from 2023-09-05 21-44-03.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3292052/82be410a-f8d6-dd94-20f8-9bd590b6eb3f.png)
 
@@ -142,8 +143,8 @@ CLI では Preview から画像アイコンをクリックします。
 
 ![Screenshot from 2023-09-05 21-45-10.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3292052/6f6b64de-25d3-fe43-1d66-c14e681b5461.png)
 
-URL をコピーして、貼り付ける。
-といった流れで 2 手間くらいかかります。
+URLをコピーして、貼り付ける。
+といった流れで2手間くらいかかります。
 
 ## 投稿
 
@@ -160,16 +161,16 @@ npx qiita publish 記事のファイルのベース名
 最後まで閲覧頂きありがとうございました。
 
 個人的にはとても便利な反面、痒いところに手が届かない印象でした。
-投稿済みの md ファイルが`タイトル.md`で取得できれば他は慣れれば良いかな、といった印象です。
+投稿済みのmdファイルが`タイトル.md`で取得できれば他は慣れれば良いかな、といった印象です。
 
 投稿自体は`タイトル.md`で可能なので、何かしらの手法で投稿済みのファイル名は直そうと思います。
 
-今回はお試しでしたが、今後も Qiita CLI を使ってみて印象が変わりましたら共有します。[^3]
-[^3]:書いていて思いましたが、Preview がダークモード対応していないの（目が）辛いです。
+今回はお試しでしたが、今後もQiita CLIを使ってみて印象が変わりましたら共有します。[^3]
+[^3]:書いていて思いましたが、Previewがダークモード対応していないの（目が）辛いです。
 
 本記事がお役に立てば幸いです！
 
-### 参考 URL
+### 参考URL
 
 https://github.com/increments/qiita-cli
 
