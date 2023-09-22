@@ -11,6 +11,7 @@ updated_at: '2023-09-05T22:34:39+09:00'
 id: ba8c19bb34fd6a5a9642
 organization_url_name: null
 slide: false
+ignorePublish: false
 ---
 
 # GitHub Copilot とは

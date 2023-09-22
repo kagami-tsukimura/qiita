@@ -59,7 +59,7 @@ Redux で監視している現在の状態に応じて処理を変える。
 </div></details>
 
 客の注文に応じて店員の処理を変える。
-− 客が注文前か、注文するのか、注文後なのかを Redux で監視する。
+− 客が注文前か、注文するのか、注文後なのかをReduxで監視する。
 
 ### ex. X
 
@@ -100,7 +100,7 @@ Redux でページの画面を変更する。
    - Deposit $10：ボタンを押して+$10 する。
      - Action 実行。
 
-3. Dispatch：Action を Store に通知
+3. Dispatch：Action をStore に通知
 
    - Event Handler：Event(Deposit $10)を処理する。
 

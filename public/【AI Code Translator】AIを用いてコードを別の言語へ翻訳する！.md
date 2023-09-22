@@ -10,6 +10,7 @@ updated_at: '2023-09-09T08:33:36+09:00'
 id: 741a056c5624dfd6adc1
 organization_url_name: null
 slide: false
+ignorePublish: false
 ---
 
 # AI Code Translator

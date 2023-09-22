@@ -9,6 +9,7 @@ updated_at: '2023-09-09T08:33:36+09:00'
 id: f2f938ec27216a6cc04d
 organization_url_name: null
 slide: false
+ignorePublish: false
 ---
 
 # Introduction
