@@ -1,11 +1,11 @@
 ---
 title: 【Tailwind CSS】個人用チートシート
 tags:
-  - 'tailwindcss'
-  - 'Web'
+  - Web
+  - tailwindcss
 private: false
-updated_at: ''
-id: null
+updated_at: '2023-09-30T17:44:05+09:00'
+id: 7d7fca7a233666232a50
 organization_url_name: null
 slide: false
 ignorePublish: false
