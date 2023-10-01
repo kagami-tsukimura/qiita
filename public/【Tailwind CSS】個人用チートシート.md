@@ -4,7 +4,7 @@ tags:
   - Web
   - tailwindcss
 private: false
-updated_at: '2023-09-30T17:44:05+09:00'
+updated_at: '2023-10-01T10:24:12+09:00'
 id: 7d7fca7a233666232a50
 organization_url_name: null
 slide: false
