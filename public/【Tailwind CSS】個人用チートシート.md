@@ -50,6 +50,7 @@ tailwindcss@3.3.3
 |                        | xl @media (min-width: 1280px)  |
 |                        | 2xl @media (min-width: 1536px) |
 | 文字を左右反転したい   | transform scale-x-[-1]         |
+| フッターを固定したい   | flex flex-col min-h-screen     |
 
 :::note info
 Information:
