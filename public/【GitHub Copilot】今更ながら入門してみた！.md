@@ -2,12 +2,12 @@
 title: 【GitHub Copilot】今更ながら入してみた！
 tags:
   - Python
-  - GiHub
+  - Gihub
   - ChatGPT
   - 記事投稿キャンペーン_ChatGPT
   - 新人プログラマ応援_記事投稿キャンペーン
 private: false
-updated_at: '2023-09-05T22:34:39+09:00'
+updated_at: '2023-10-10T19:38:46+09:00'
 id: ba8c19bb34fd6a5a9642
 organization_url_name: null
 slide: false
