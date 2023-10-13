@@ -111,7 +111,8 @@ Free プランでは以下の制約があります。
 - メモリ 1GB まで
 - Private のアプリは一つまで
 - Public のアプリは無制限
-  :::
+
+:::
 
 ![Screenshot from 2023-08-25 21-15-29.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3292052/5186c997-52ed-e065-1b83-9df84c7c39f1.png)
 
