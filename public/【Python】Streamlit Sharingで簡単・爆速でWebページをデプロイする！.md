@@ -16,34 +16,34 @@ ignorePublish: false
 # Introduction
 
 皆様は`Streamlit`をご存じでしょうか？
-`Streamlit`は Web システムを`Python`のみで作成できるフレームワークです。
+完結に説明すると、WebシステムをPythonのみで作成できるフレームワークです。
 
 <details><summary><b>=======================<br>&nbsp;&nbsp;&nbsp;Streamlitについて<br>&nbsp;========================</b></summary><div>
 
-`Python`で Web となると`Django`や`Flask`、`FastAPI`等が有名ですが、
+Pythonで Web開発となるとDjangoやFlask、FastAPI等が有名ですが、
 `Streamlit`ではデータの可視化や機械学習モデルを用いたデモに用いられます。
 
-一般的な Web 開発に必要な`HTML`や`CSS`、`JavaScript`を用いずとも作成できるため、Web 開発に明るくない方や社内で結果を共有する際に優位性を発揮します。
+一般的な Web 開発に必要なHTMLやCSS、JavaScriptを用いずとも作成できるため、Web開発に明るくない方や社内で結果を共有する際に優位性を発揮します。
 
 本記事で内容には触れませんが、公式チュートリアル及びドキュメントが充実しているため興味のある方は覗いてみてください。
 
 https://docs.streamlit.io/knowledge-base/tutorials
 
 英語ですがコードは簡易で画像も多いため、やりたいことはほぼチュートリアルで解決します。
-学習コストもかなり低いため、`Python`で次何しよう？ という方は是非一度お試しください！
+学習コストもかなり低いため、Pythonで次何しよう？ という方は是非一度お試しください！
 
 </div></details>
 
 手軽かつ非常に簡単に作成でき、デプロイも簡単でした。
 
-ただし UI の変更があって、古い記事や Udemy 等では少し躓く可能性があるように感じました。
+ただしUIの変更があって、古い記事やUdemy等では少し躓く可能性があるように感じました。
 本記事では公式が提供している`Streamlit Sharing`を用いたデプロイ方法を共有します。
 
 :::note warn
-以前は Streamlit Cloud という名称で、現在とは UI が異なっています。
+以前はStreamlit Cloudという名称で、現在とはUIが異なっています。
 :::
 
-本記事でデプロイしたページは、Udemy の下記講座で作成したものです。
+本記事でデプロイしたページは、Udemyの下記講座で作成したものです。
 
 https://www.udemy.com/course/data-analysis_and_dashboard/
 
@@ -58,7 +58,7 @@ Ubuntu22.04
 
 ## デプロイ準備
 
-デプロイしたい`Streamlit`のプロジェクトを`GitHub`にコミットしておきます。
+デプロイしたい`Streamlit`のプロジェクトをGitHubにコミットしておきます。
 コミット手順は手前味噌ですが下記を参考にどうぞ。
 
 https://qiita.com/kagami_t/items/ade25ff6e8bf8faf2ab2
@@ -73,7 +73,7 @@ https://streamlit.io/
 
 ![st0.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3292052/7c98b2a5-006a-e55a-12fd-cee2e24fd672.png)
 
-`GitHub`と`Google`連携で登録できます。
+GitHubとGoogle連携で登録できます。
 私は`Continue with GitHub`から連携しました。
 
 ![Screenshot from 2023-08-25 21-10-34.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3292052/01380420-fd3a-e484-7d8c-9f47842f9a82.png)
@@ -84,7 +84,7 @@ https://streamlit.io/
 
 |        項目        | 説明                                         |
 | :----------------: | :------------------------------------------- |
-|     Repository     | `GitHub`のリポジトリをリストから選択します。 |
+|     Repository     | GitHubのリポジトリをリストから選択します。   |
 |       Branch       | デプロイするブランチをリストから選択します。 |
 |   Main file path   | デプロイするファイルを記入します。           |
 | App URL (Optional) | ドメインを記入します。                       |
@@ -95,7 +95,7 @@ Deploy! には少し時間がかかります。
 
 ![Screenshot from 2023-08-23 21-33-59.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3292052/a810cb4e-f9e1-2f89-7bab-97453a84e4f4.png)
 
-完了すると、先程指定したドメインに Web ページがデプロイされます。
+完了すると、先程指定したドメインにWebページがデプロイされます。
 
 ![Screenshot from 2023-08-23 21-35-25.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3292052/67f757b0-da2b-2252-6f42-af6db9294071.png)
 
@@ -106,11 +106,11 @@ Deploy! には少し時間がかかります。
 ### プラン制限
 
 :::note warn
-Free プランでは以下の制約があります。
+Freeプランでは以下の制約があります。
 
-- メモリ 1GB まで
-- Private のアプリは一つまで
-- Public のアプリは無制限
+- メモリ: 1GBまで
+- Privateのアプリ: 一つまで
+- Publicのアプリ: 無制限
 
 :::
 
@@ -123,7 +123,7 @@ Free プランでは以下の制約があります。
 私の参画しているプロジェクトでは物体検知や分類結果を直接見せることが多いですが、お客様や社内外向けのデモを`Streamlit`で作成し、手元で見てもらえるため理解が深まりやすいと思います。
 
 特に機械学習やデータ分析周りは学ぶことも多いため、工数削減にも大変役立ちます。
-UI もリッチなので、工数以上に努力の跡が見せられると思います...!
+UIもリッチなので、工数以上に努力の跡が見せられると思います...!
 
 本記事がお役に立てば幸いです！
 
