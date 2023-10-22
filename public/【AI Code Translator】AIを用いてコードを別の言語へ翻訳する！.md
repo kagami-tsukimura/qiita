@@ -6,7 +6,7 @@ tags:
   - AI
   - ChatGPT
 private: false
-updated_at: '2023-09-09T08:33:36+09:00'
+updated_at: '2023-10-22T15:44:23+09:00'
 id: 741a056c5624dfd6adc1
 organization_url_name: null
 slide: false
