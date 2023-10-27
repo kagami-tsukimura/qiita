@@ -1,14 +1,14 @@
 ---
 title: 【AI】機械学習入門前のあなたへ
 tags:
-  - 'Python'
-  - '機械学習'
-  - 'AI'
-  - 'Linux'
-  - '初心者'
+  - Python
+  - Linux
+  - 初心者
+  - 機械学習
+  - AI
 private: true
-updated_at: ''
-id: null
+updated_at: '2023-10-27T23:21:32+09:00'
+id: 27d2b528170828048e3d
 organization_url_name: null
 slide: false
 ignorePublish: false
