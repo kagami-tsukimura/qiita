@@ -6,7 +6,7 @@ tags:
   - 初心者
   - 機械学習
   - AI
-private: true
+private: false
 updated_at: '2023-10-28T00:36:16+09:00'
 id: 27d2b528170828048e3d
 organization_url_name: null
