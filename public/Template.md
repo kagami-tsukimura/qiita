@@ -1,9 +1,11 @@
 ---
 title: Template
 tags:
-  - Web
+  - Network
+  - AWS
+  - Terraform
 private: true
-updated_at: '2023-10-28T11:11:14+09:00'
+updated_at: '2023-12-24T00:31:05+09:00'
 id: 458efc0e5eabbf7cde60
 organization_url_name: null
 slide: false
